@@ -3,9 +3,11 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 function NavScrollExample() {
+    let location = useLocation();
+
     return (
         <>
             <Navbar bg="light" expand="lg">
@@ -18,11 +20,13 @@ function NavScrollExample() {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <li class="nav-item">
-                                <Link class="nav-link active" aria-current="page" to="/">Home</Link>
+                            <li className="nav-item">
+                                <Link className={`nav-link ${location.pathname === '/' ? "red" : ""}`} aria-current="page" to="/">Home</Link>
+
                             </li>
-                            <li class="nav-item">
-                                <Link class="nav-link" to="/about">About</Link>
+                            <li className="nav-item">
+                                <Link className={`nav-link ${location.pathname === '/about' ? "red" : ""}`} to="/about">About</Link>
+
                             </li>
 
                         </Nav>
